@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import {
   MDBCard,
+  MDBCardHeader,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
   MDBBtn
 } from 'mdb-react-ui-kit';
+import './css/View.css'
+
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function View() {
-
   const [viewEmp,setviewEmp]=useState({})
   const {id}=useParams()
   console.log(id);
@@ -26,22 +28,17 @@ function View() {
   },[])
  
   return (
-    <div style={{borderRadius:'10px',padding:'10px'}}>
-      <MDBCard className='shadow' style={{border:'10px',borderRadius:'20px'}}>
-        <img src="https://th.bing.com/th/id/OIP.eCC-bDsCGbIRiKE6s3m14QHaHa?rs=1&pid=ImgDetMain" style={{width:"90px"}} alt="" />
+<div className='view'>
+<MDBCard>
+      <MDBCardHeader>ID: {viewEmp.id}</MDBCardHeader>
       <MDBCardBody>
-        <MDBCardTitle><h2>Employee details</h2></MDBCardTitle>
-        <MDBCardText>
-          <h5>ID :{viewEmp.id}</h5>
-          <h5>Name :{viewEmp.name} </h5>
-          <h5>Age :{viewEmp.age}</h5>
-          <h5>Designation:{viewEmp.designation}</h5>
-          <h5>Salary :{viewEmp.salary}</h5>
-          <button className='btn btn-dark px-3'>Back</button>
-        </MDBCardText>
+        <MDBCardTitle>👤Name: {viewEmp.name}</MDBCardTitle>
+        <MDBCardText>📝Task Details: {viewEmp.task}</MDBCardText>
+        <MDBCardText>Technologies used: {viewEmp.technologies}</MDBCardText>
+        <MDBBtn className='btn-dark' href='/admin'>Go back</MDBBtn>
       </MDBCardBody>
     </MDBCard>
-    </div>
+</div>
   )
 }
 

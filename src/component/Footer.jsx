@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
   MDBFooter,
   MDBContainer,
@@ -7,47 +8,45 @@ import {
   MDBIcon,
   MDBBtn
 } from 'mdb-react-ui-kit';
-import './css/Footer.css'
 
 function Footer() {
   return (
-    <div>
-          <MDBFooter className='footer text-center text-white bg-dark'>
+    <div className=''>
+         <MDBFooter className='bg-light text-center text-dark'>
       <MDBContainer className='p-4 pb-0'>
         <section className='mb-4'>
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="dark" floating className='m-1' href='#!' role='button'>
             <MDBIcon fab icon='facebook-f' />
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="dark" floating className='m-1' href='#!' role='button'>
             <MDBIcon fab icon='twitter' />
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="dark" floating className='m-1' href='#!' role='button'>
             <MDBIcon fab icon='google' />
           </MDBBtn>
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="dark" floating className='m-1' href='#!' role='button'>
             <MDBIcon fab icon='instagram' />
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="dark" floating className='m-1' href='#!' role='button'>
             <MDBIcon fab icon='linkedin-in' />
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="dark" floating className='m-1' href='#!' role='button'>
             <MDBIcon fab icon='github' />
           </MDBBtn>
         </section>
       </MDBContainer>
 
       <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-        © 2023 Copyright:
-        <a className='text-white' href='https://mdbootstrap.com/'>
-          EMS.com
+        © 2024 Copyright:
+        <a className='text-dark'>
+          TaskManagumentApp.com
         </a>
       </div>
     </MDBFooter>
- 
     </div>
   )
 }

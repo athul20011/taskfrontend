@@ -2,29 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { MDBInput } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import './css/Edit.css'
 
 function Edit() {
-  //To hold updated values
   const [eid,setId]=useState("")
   const [empname,setName]=useState("")
-  const [empage,setAge]=useState("")
-  const [empdesignation,setDesignation]=useState("")
-  const [empsalary,setSalary]=useState("")
+  const [emptask,setTask]=useState("")
+  const [emptechnologies,settechnologies]=useState("")
 
-    //get a particular id from the url
     const {id}=useParams()
     console.log(id);//4
 
-  //get a particular employee details
+  
   const viewEmp=async(id)=>{
-    const result = await axios.get(`${base_url}/view-an-employee/${id}`)//employee details
+    const result = await axios.get(`${base_url}/view-an-employee/${id}`)
     console.log(result.data.employees);//object
-    // setEmployeeData(result.data.employees)
     setId(result.data.employees.id)
     setName(result.data.employees.name)
-    setAge(result.data.employees.age)
-    setDesignation(result.data.employees.designation)
-    setSalary(result.data.employees.salary)
+    setTask(result.data.employees.task)
+    settechnologies(result.data.employees.technologies)
 
   }
   useEffect(()=>{
@@ -35,40 +31,39 @@ function Edit() {
 
 //update function
     const base_url='http://localhost:8000'
-    //api call to update an employee details
     const updateEmployee=async(e)=>{
       e.preventDefault()
       const body={
         id:eid,
         name:empname,
-        age:empage,
-        designation:empdesignation,
-        salary:empsalary
+        task:emptask,
+        technologies:emptechnologies
       }
         const result= await axios.post(`${base_url}/update-an-employee/${id}`,body)
         console.log(result);
-        alert(result.data.message)
-        location('/')//back to admin
+        alert('Data updated successfully')
+        location('/admin')//back to admin
     }
 
 
   return (
-    <div>
+    <div className='edit'>
       <div className="container text-center m-5">
-        <h2>Edit Employee</h2>
+        <h2>Edit Details</h2>
+        <div className='m-3'>
+          <img src="https://webstockreview.net/images/how-to-edit-png-images-6.png" width={'100px'} alt="" />
+        </div>
         <form className='p-5'>
         <MDBInput onChange={(e)=>setId(e.target.value)} value={eid} label='ID' id='formControlLg' type='text' size='lg' readOnly />
         <br />
         <MDBInput onChange={(e)=>setName(e.target.value)} value={empname} label='Name' id='formControlLg' type='text' size='lg' />
       <br />
-      <MDBInput onChange={(e)=>setAge(e.target.value)}  value={empage}  label='Age' id='formControlLg' type='text' size='lg' />
+      <MDBInput onChange={(e)=>setTask(e.target.value)}  value={emptask}  label='task' id='formControlLg' type='text' size='lg' />
       <br />
-      <MDBInput onChange={(e)=>setDesignation(e.target.value)} value={empdesignation}  label='Designation' id='formControlLg' type='text' size='lg' />
-      <br />
-      <MDBInput onChange={(e)=>setSalary(e.target.value)} value={empsalary} label='Salary' id='formControlLg' type='text' size='lg' />
+      <MDBInput onChange={(e)=>settechnologies(e.target.value)}  value={emptechnologies} label='technologies' id='formControlLg' type='text' size='lg' />
       <br />
       <div>
-        <button onClick={(e)=>updateEmployee(e)} className='btn btn-success m-3'>Update <i className='fa-solid fa-user'></i></button>
+        <button onClick={(e)=>updateEmployee(e)} className='btn btn-dark m-3'>Update <i className='fa-solid fa-pen'></i></button>
       </div>
         </form>
       </div> 
